@@ -1,23 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import AboutMe from './components/AboutMe';
+import Landing from './components/Landing';
+import Projects from './components/Projects/Projects'
+import { useState } from 'react';
 
 function App() {
+
+  const [showAboutMe, setShowAboutMe] = useState(false)
+  const [showProjects, setShowProjects] = useState(false)
+
+  const handleAboutMeClick = () => {
+    setShowAboutMe(!showAboutMe)
+    setShowProjects(false)
+  }
+  const handleProjectsClick = () => {
+    setShowProjects(!showProjects)
+    setShowAboutMe(false)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showAboutMe === false && showProjects === false && (
+        <Landing
+          handleAboutMeClick={handleAboutMeClick}
+          handleProjectsClick={handleProjectsClick}
+        />
+      )}
+
+      {showAboutMe && <AboutMe
+        showProjects={showProjects}
+        setShowProjects={setShowProjects}
+        handleProjectsClick={handleProjectsClick} />}
+
+      {showProjects && <Projects
+        handleAboutMeClick={handleAboutMeClick} />}
     </div>
   );
 }
