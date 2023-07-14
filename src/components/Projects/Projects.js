@@ -29,6 +29,11 @@ const Projects = ({ handleAboutMeClick }) => {
 
     return (
         <div>
+            <Stack direction={'row'} style={{ justifyContent: 'center' }}>
+                <Button onClick={handlePreviousProjectClick}>Previous Project</Button>
+                <Button onClick={handleNextProjectClick}>Next Project</Button>
+            </Stack>
+
             {projectToDisplay === 1 && (
                 <Project1 />
             )}
@@ -48,10 +53,7 @@ const Projects = ({ handleAboutMeClick }) => {
                 <Button component="a" href="https://github.com/howaboutdale" target='_blank'>GitHub</Button>
                 <Button component="a" href="https://www.linkedin.com/in/dale-tromp/" target='_blank'>LinkedIn</Button>
             </Stack>
-            <Stack direction={'row'} style={{ justifyContent: 'center' }}>
-                <Button onClick={handlePreviousProjectClick}>Previous Project</Button>
-                <Button onClick={handleNextProjectClick}>Next Project</Button>
-            </Stack>
+
         </div>
 
     )
